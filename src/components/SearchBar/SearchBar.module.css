@@ -1,0 +1,36 @@
+.inputWrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.input {
+	width: 100%;
+	max-width: 300px;
+	height: 3.5rem;
+	padding: 0.75rem 1.25rem;
+	background-color: var(--color-black-800);
+	border: 1px solid var(--color-black-700);
+	border-radius: 6px;
+	font-size: 1.6rem;
+	color: var(--color-white-900);
+	outline: none;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input:focus {
+	border-color: var(--color-white-800);
+}
+
+.input::placeholder {
+	color: var(--color-white-800);
+}
+
+@media (max-width: 576px) {
+	.inputWrapper {
+		width: 100%;
+	}
+	.input {
+		max-width: 100%;
+	}
+}

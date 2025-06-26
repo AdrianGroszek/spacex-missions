@@ -1,0 +1,12 @@
+.sectionHeading {
+	font-size: var(--font-size-3xl);
+}
+
+.grayText {
+	color: var(--color-white-800);
+}
+
+.sectionHeading,
+.grayText {
+	font-family: 'Exo 2';
+}

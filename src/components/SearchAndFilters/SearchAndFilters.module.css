@@ -1,0 +1,18 @@
+.filtersContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 0.8rem;
+}
+
+.rightFiltersGroup {
+	display: flex;
+	gap: 0.8rem;
+}
+
+@media (max-width: 576px) {
+	.rightFiltersGroup {
+		width: 100%;
+	}
+}

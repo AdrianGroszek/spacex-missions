@@ -1,0 +1,23 @@
+.buttonWrapper {
+	min-width: 3.5rem;
+	height: 3.5rem;
+}
+
+.filterResetButton {
+	height: 100%;
+	width: 100%;
+	background-color: var(--color-black-800);
+	color: var(--color-white-800);
+	border: 1px solid var(--color-black-700);
+	border-radius: 6px;
+	transition: 0.2s ease;
+}
+
+.filterResetButton:hover {
+	color: var(--color-white-900);
+	border: 1px solid var(--color-white-800);
+}
+
+.filterResetButton svg {
+	margin-top: 3px;
+}

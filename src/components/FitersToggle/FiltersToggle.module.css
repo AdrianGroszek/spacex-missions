@@ -1,0 +1,51 @@
+.fitersToggleWrapperDesktop {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fitersToggleWrapperMobile {
+	display: none;
+}
+
+.fitersToggleWrapperDesktop,
+.fitersToggleWrapperMobile {
+	gap: 0.2rem;
+	height: 3.5rem;
+	padding: 0.4rem;
+	border-radius: 6px;
+	background-color: var(--color-black-800);
+	border: 1px solid var(--color-black-700);
+}
+
+.toggleButton {
+	height: 100%;
+	padding: 0 1rem;
+	background-color: var(--color-black-800);
+	color: var(--color-white-800);
+	border-radius: 4px;
+	border: none;
+	transition: 0.2s ease;
+}
+
+.toggleButton:not(.active):hover {
+	background-color: var(--color-black-700);
+}
+
+.active {
+	background-color: var(--accent-color);
+	color: var(--color-white-900);
+}
+
+@media (max-width: 620px) {
+	.fitersToggleWrapperDesktop {
+		display: none;
+	}
+
+	.fitersToggleWrapperMobile {
+		display: flex;
+	}
+	.toggleButton svg {
+		margin-top: 3px;
+	}
+}
