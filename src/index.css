@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
 	--color-black-900: #0d1117;
 	--color-black-800: #161b22;
@@ -40,7 +42,7 @@ body {
 	background-color: var(--color-black-900);
 	color: var(--color-white-900);
 	font-size: 1.6rem;
-	font-family: 'Urbanist', sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 
 a {

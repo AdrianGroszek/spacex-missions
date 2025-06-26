@@ -1,0 +1,10 @@
+.app-wrapper {
+	height: 100vh;
+}
+
+.content-wrapper {
+	max-width: 128rem;
+	width: 100%;
+	margin: 0 auto;
+	padding: 8rem 1rem 0;
+}
