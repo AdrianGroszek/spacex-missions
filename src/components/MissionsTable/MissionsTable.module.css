@@ -64,8 +64,11 @@
 	height: 35px;
 	width: 35px;
 	margin-right: 0.5rem;
-	background-color: #fff;
 	border-radius: 6px;
+}
+
+.imgContainer .image {
+	width: 100%;
 }
 
 @media (max-width: 620px) {

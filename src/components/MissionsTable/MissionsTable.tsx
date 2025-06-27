@@ -19,7 +19,13 @@ export default function MissionsTable() {
 						<td
 							className={styles.missionNameContainer}
 							data-cell='mission name'>
-							<div className={styles.imgContainer}></div>
+							<div className={styles.imgContainer}>
+								<img
+									src='https://images2.imgbox.com/eb/0f/Vev7xkUX_o.png'
+									alt='patch image'
+									className={styles.image}
+								/>
+							</div>
 							<div>
 								<p>Crew-5</p>
 								<p className={styles.grayText}>Flight number: 187</p>

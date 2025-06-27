@@ -1,0 +1,102 @@
+/* START: Details section */
+.sectionWrapper {
+	border-bottom: 1px solid var(--color-black-700);
+	padding-bottom: 1.5rem;
+}
+
+.detailsSectionHeader {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 2rem;
+}
+
+.detailsSectionStatus,
+.detailsSectionDescriptionTitle,
+.InfoItem {
+	color: var(--color-white-800);
+}
+
+.detailsSectionBody {
+	display: flex;
+}
+
+.detailsSectionDescription {
+	width: 50%;
+	padding-right: 1rem;
+}
+.detailsSectionDescriptionTitle {
+	margin-bottom: 0.5rem;
+}
+
+.imgContainer {
+	max-width: 300px;
+	height: 200px;
+}
+
+.imgContainer .image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.detailsSetcionRight {
+	display: flex;
+	gap: 0.75rem;
+}
+
+.detailsSetcionRightInfoItems {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+}
+
+.textWhite {
+	color: var(--color-white-900);
+}
+
+.textGreen {
+	color: var(--color-green);
+}
+
+.textRed {
+	color: var(--color-red);
+}
+
+.progressBar {
+	max-width: 200px;
+	height: 6px;
+	margin: 0.25rem 0;
+	background-color: var(--color-black-700);
+	border-radius: 50px;
+}
+
+.progressBarPercent {
+	width: 40%;
+	height: 100%;
+	background-color: var(--color-green);
+	border-radius: 50px;
+}
+/* END: Details section */
+
+@media (max-width: 870px) {
+	.detailsSectionBody {
+		flex-direction: column;
+	}
+
+	.detailsSectionDescription {
+		width: 100%;
+		padding-right: 0;
+		margin-bottom: 1rem;
+	}
+}
+
+@media (max-width: 576px) {
+	.detailsSetcionRight {
+		flex-direction: column;
+	}
+
+	.imgContainer {
+		max-width: 100%;
+	}
+}

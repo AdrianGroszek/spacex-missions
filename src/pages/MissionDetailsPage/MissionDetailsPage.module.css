@@ -1,0 +1,55 @@
+/* START: Mission title */
+.missionTitleContainer {
+	display: flex;
+	gap: 0.5rem;
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid var(--color-black-700);
+}
+
+.imgContainer {
+	height: 50px;
+	width: 50px;
+	border-radius: 4px;
+}
+
+.imgContainer .image {
+	width: 100%;
+	object-fit: cover;
+}
+
+.titleWrapper h1 {
+	font-size: 2.8rem;
+	font-family: 'Exo 2';
+}
+
+.missionTitleInfoSmall {
+	color: var(--color-white-800);
+	font-size: 1.2rem;
+}
+
+.missionTitleInfoSmall span:not(:last-child) {
+	margin-right: 1rem;
+}
+
+.statusSuccess {
+	color: var(--color-green);
+}
+.statusFailure {
+	color: var(--color-red);
+}
+.statusPending {
+	color: var(--color-orange);
+}
+/* END: Mission title */
+
+/* Mobile */
+@media (max-width: 576px) {
+	.titleWrapper h1 {
+		font-size: 2.2rem;
+	}
+
+	.imgContainer {
+		height: 40px;
+		width: 40px;
+	}
+}
