@@ -1,3 +1,4 @@
+import MissionsTable from '../../components/MissionsTable/MissionsTable';
 import SearchAndFilters from '../../components/SearchAndFilters/SearchAndFilters';
 import styles from './MissionsPage.module.css';
 
@@ -14,7 +15,7 @@ export default function MissionsPage() {
 			<SearchAndFilters />
 
 			{/* Table with missions list */}
-			<div>Missions List</div>
+			<MissionsTable />
 		</>
 	);
 }

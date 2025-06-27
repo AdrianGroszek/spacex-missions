@@ -1,0 +1,96 @@
+.tableContainer {
+	max-height: 70vh;
+	border-top: 1px solid var(--color-black-700);
+	border-bottom: 1px solid var(--color-black-700);
+	overflow-y: auto;
+
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+.tableWrapper {
+	width: 100%;
+	border-collapse: collapse;
+	text-align: left;
+}
+
+.tableWrapper thead {
+	height: 3.5rem;
+	font-family: 'Exo 2';
+}
+
+.tableWrapper thead th {
+	position: sticky;
+	top: 0;
+	background-color: var(--color-black-800);
+	z-index: 1;
+}
+
+.tableWrapper thead th,
+.tableWrapper tbody td {
+	padding: 0.5rem;
+}
+
+.tableWrapper tbody tr {
+	transition: 0.2s;
+}
+
+.tableWrapper tbody tr:hover {
+	background-color: var(--color-black-800);
+	cursor: pointer;
+}
+
+.grayText {
+	color: var(--color-white-800);
+	font-size: var(--font-size-sm);
+}
+
+.statusSuccess {
+	color: var(--color-green);
+}
+.statusFailure {
+	color: var(--color-red);
+}
+.statusPending {
+	color: var(--color-orange);
+}
+
+.missionNameContainer {
+	display: flex;
+	align-items: center;
+}
+
+.imgContainer {
+	height: 35px;
+	width: 35px;
+	margin-right: 0.5rem;
+	background-color: #fff;
+	border-radius: 6px;
+}
+
+@media (max-width: 620px) {
+	.tableWrapper thead th {
+		display: none;
+	}
+
+	.tableWrapper tbody td {
+		display: grid;
+		gap: 0.5rem;
+		grid-template-columns: 17ch auto;
+	}
+
+	.tableWrapper tbody tr {
+		border-bottom: 1px solid var(--color-black-700);
+	}
+
+	.imgContainer {
+		display: none;
+	}
+
+	.tableWrapper tbody td::before {
+		content: attr(data-cell) ': ';
+		font-weight: 800;
+		color: var(--color-white-900);
+		text-transform: capitalize;
+	}
+}
