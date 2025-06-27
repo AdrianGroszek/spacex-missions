@@ -1,4 +1,5 @@
 import DetailsCard from '../../components/DetailsCard/DetailsCard';
+import PayloadsCard from '../../components/PayloadsCard/PayloadsCard';
 import styles from './MissionDetailsPage.module.css';
 
 export default function MissionDetailsPage() {
@@ -26,8 +27,9 @@ export default function MissionDetailsPage() {
 			{/* Details card */}
 			<DetailsCard />
 			<DetailsCard />
-			<DetailsCard />
-			<DetailsCard />
+
+			{/* Payloads card */}
+			<PayloadsCard />
 		</>
 	);
 }

@@ -6,7 +6,7 @@ export default function MissionsPage() {
 	return (
 		<>
 			{/* Page heading */}
-			<div>
+			<div className={styles.headingWrapper}>
 				<h1 className={styles.sectionHeading}>Missions List</h1>
 				<p className={styles.grayText}>148 Results</p>
 			</div>
