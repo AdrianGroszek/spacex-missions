@@ -4,32 +4,80 @@ import { FiLoader } from 'react-icons/fi';
 import { FaListUl } from 'react-icons/fa6';
 import { FaCheck } from 'react-icons/fa';
 import { TbAlertTriangle } from 'react-icons/tb';
+import { useSearchParams } from 'react-router';
 
 export default function FiltersToggle() {
+	const [searchParams, setSearchParams] = useSearchParams();
+
+	function handleClick(value: string) {
+		searchParams.set('status', value);
+		setSearchParams(searchParams);
+	}
+
+	const filterValue = searchParams.get('status') || 'all';
+
 	return (
 		<>
 			{/* Desktop Toggle Filter */}
 			<div className={styles.fitersToggleWrapperDesktop}>
-				<button className={`${styles.toggleButton} ${styles.active}`}>
+				<button
+					onClick={() => handleClick('all')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'all' && styles.active
+					}`}>
 					All
 				</button>
-				<button className={styles.toggleButton}>Success</button>
-				<button className={styles.toggleButton}>Failure</button>
-				<button className={styles.toggleButton}>Pending</button>
+				<button
+					onClick={() => handleClick('success')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'success' && styles.active
+					}`}>
+					Success
+				</button>
+				<button
+					onClick={() => handleClick('failure')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'failure' && styles.active
+					}`}>
+					Failure
+				</button>
+				<button
+					onClick={() => handleClick('pending')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'pending' && styles.active
+					}`}>
+					Pending
+				</button>
 			</div>
 
 			{/* Mobile Toggle Filter */}
 			<div className={styles.fitersToggleWrapperMobile}>
-				<button className={`${styles.toggleButton} ${styles.active}`}>
+				<button
+					onClick={() => handleClick('all')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'all' && styles.active
+					}`}>
 					<FaListUl />
 				</button>
-				<button className={styles.toggleButton}>
+				<button
+					onClick={() => handleClick('success')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'success' && styles.active
+					}`}>
 					<FaCheck />
 				</button>
-				<button className={styles.toggleButton}>
+				<button
+					onClick={() => handleClick('failure')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'failure' && styles.active
+					}`}>
 					<TbAlertTriangle />
 				</button>
-				<button className={styles.toggleButton}>
+				<button
+					onClick={() => handleClick('pending')}
+					className={`${styles.toggleButton} ${
+						filterValue === 'pending' && styles.active
+					}`}>
 					<FiLoader />
 				</button>
 			</div>
