@@ -221,3 +221,48 @@ export type SimplifiedSpaceXRocket = {
 	flickr_image: string | null;
 };
 // END: Rockets Types
+// START: Launchpads Types
+export type RawSpaceXLaunchpad = {
+	id: string;
+	name: string;
+	full_name: string;
+	locality: string;
+	region: string;
+	status:
+		| 'active'
+		| 'inactive'
+		| 'unknown'
+		| 'retired'
+		| 'lost'
+		| 'under construction';
+	launch_attempts: number;
+	launch_successes: number;
+	details: string | null;
+	images: {
+		large: string[];
+	};
+	timezone: string;
+	latitude: number | null;
+	longitude: number | null;
+	launches: string[];
+};
+
+export type SimplifiedSpaceXLaunchpad = {
+	id: string;
+	name: string;
+	full_name: string;
+	locality: string;
+	region: string;
+	status:
+		| 'active'
+		| 'inactive'
+		| 'unknown'
+		| 'retired'
+		| 'lost'
+		| 'under construction';
+	launch_attempts: number;
+	launch_successes: number;
+	details: string | null;
+	image: string | null;
+};
+// END: Launchpads Types
