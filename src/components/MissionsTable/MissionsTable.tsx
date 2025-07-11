@@ -1,45 +1,27 @@
-import { useQuery } from '@tanstack/react-query';
 import styles from './MissionsTable.module.css';
-import { fetchLaunches } from '../../services/spacex';
-import { useNavigate, useSearchParams } from 'react-router';
+import { useNavigate } from 'react-router';
 
 import { PiPlanetFill } from 'react-icons/pi';
+import {
+	useSpaceXMissions,
+	type FilterStateType,
+} from '../../hooks/useSpaceXMissions';
 
-export default function MissionsTable() {
+type MissionsTablePropsType = {
+	filters: FilterStateType;
+};
+
+export default function MissionsTable({ filters }: MissionsTablePropsType) {
 	const navigate = useNavigate();
-	const [searchParams] = useSearchParams();
 
 	const {
-		data: launches,
+		missions: filteredLaunches,
 		isLoading,
 		error,
-	} = useQuery({
-		queryKey: ['launches'],
-		queryFn: fetchLaunches,
-	});
-
-	const filterValue = searchParams.get('status') || 'all';
+	} = useSpaceXMissions(filters);
 
 	if (isLoading) return <div>Loading...</div>;
 	if (error) return <div>Error</div>;
-
-	let filteredLaunches;
-
-	if (filterValue === 'all') {
-		filteredLaunches = launches;
-	}
-
-	if (filterValue === 'success') {
-		filteredLaunches = launches?.filter((launch) => launch.success === true);
-	}
-
-	if (filterValue === 'failure') {
-		filteredLaunches = launches?.filter((launch) => launch.success === false);
-	}
-
-	if (filterValue === 'pending') {
-		filteredLaunches = launches?.filter((launch) => launch.upcoming === true);
-	}
 
 	return (
 		<div className={styles.tableContainer}>
@@ -58,15 +40,15 @@ export default function MissionsTable() {
 					{filteredLaunches?.map((launch) => {
 						return (
 							<tr
-								key={launch.id}
-								onClick={() => navigate(`/missions/${launch.id}`)}>
+								key={launch.launchData.id}
+								onClick={() => navigate(`/missions/${launch.launchData.id}`)}>
 								<td
 									className={styles.missionNameContainer}
 									data-cell='mission name'>
 									<div className={styles.imgContainer}>
-										{launch.image ? (
+										{launch.launchData.image ? (
 											<img
-												src={launch.image}
+												src={launch.launchData.image}
 												alt='patch image'
 												className={styles.image}
 											/>
@@ -77,31 +59,34 @@ export default function MissionsTable() {
 										)}
 									</div>
 									<div>
-										<p>{launch.name}</p>
+										<p>{launch.launchData.name}</p>
 										<p className={styles.grayText}>
-											Flight number: {launch.flight_number}
+											Flight number: {launch.launchData.flight_number}
 										</p>
 									</div>
 								</td>
 								<td data-cell='start date'>
-									{new Date(launch.date_utc).toLocaleDateString('pl-PL', {
-										year: 'numeric',
-										month: '2-digit',
-										day: '2-digit',
-									})}
+									{new Date(launch.launchData.date_utc).toLocaleDateString(
+										'pl-PL',
+										{
+											year: 'numeric',
+											month: '2-digit',
+											day: '2-digit',
+										}
+									)}
 								</td>
 								<td
 									className={
-										launch.upcoming
+										launch.launchData.upcoming
 											? styles.statusPending
-											: launch.success
+											: launch.launchData.success
 											? styles.statusSuccess
 											: styles.statusFailure
 									}
 									data-cell='status'>
-									{launch.upcoming
+									{launch.launchData.upcoming
 										? 'Pending'
-										: launch.success
+										: launch.launchData.success
 										? 'Success'
 										: 'Failure'}
 								</td>

@@ -264,5 +264,7 @@ export type SimplifiedSpaceXLaunchpad = {
 	launch_successes: number;
 	details: string | null;
 	image: string | null;
+	latitude: number | null;
+	longitude: number | null;
 };
 // END: Launchpads Types

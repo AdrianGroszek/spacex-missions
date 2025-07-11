@@ -10,8 +10,9 @@ export default function FiltersToggle() {
 	const [searchParams, setSearchParams] = useSearchParams();
 
 	function handleClick(value: string) {
-		searchParams.set('status', value);
-		setSearchParams(searchParams);
+		const newParams = new URLSearchParams(searchParams);
+		newParams.set('status', value);
+		setSearchParams(newParams);
 	}
 
 	const filterValue = searchParams.get('status') || 'all';

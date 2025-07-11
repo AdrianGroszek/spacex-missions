@@ -2,10 +2,14 @@ import styles from './FiltersReset.module.css';
 
 import { FaXmark } from 'react-icons/fa6';
 
-export default function FiltersReset() {
+type FiltersResetPropsType = {
+	onReset: () => void;
+};
+
+export default function FiltersReset({ onReset }: FiltersResetPropsType) {
 	return (
 		<div className={styles.buttonWrapper}>
-			<button className={styles.filterResetButton}>
+			<button className={styles.filterResetButton} onClick={onReset}>
 				<FaXmark />
 			</button>
 		</div>

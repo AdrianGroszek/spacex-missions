@@ -56,6 +56,8 @@ export const simplyfyLaunchpadsData = (
 	launch_successes: rawData.launch_successes,
 	details: rawData.details,
 	image: rawData.images.large.length > 0 ? rawData.images.large[0] : null,
+	latitude: rawData.latitude,
+	longitude: rawData.longitude,
 });
 
 const BASE_URL = 'https://api.spacexdata.com/v4';
