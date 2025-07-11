@@ -107,6 +107,31 @@ export function useSpaceXMissions(filters: FilterStateType) {
 			});
 		}
 
+		switch (filters.sort) {
+			case 'name-asc':
+				return result.sort((a, b) =>
+					a.launchData.name < b.launchData.name ? -1 : 1
+				);
+			case 'name-desc':
+				return result.sort((a, b) =>
+					a.launchData.name > b.launchData.name ? -1 : 1
+				);
+			case 'date-acs':
+				return result.sort(
+					(a, b) =>
+						new Date(a.launchData.date_utc).getTime() -
+						new Date(b.launchData.date_utc).getTime()
+				);
+			case 'date-desc':
+				return result.sort(
+					(a, b) =>
+						new Date(b.launchData.date_utc).getTime() -
+						new Date(a.launchData.date_utc).getTime()
+				);
+			default:
+				return result;
+		}
+
 		return result;
 	}, [enrichedMissions, filters]);
 

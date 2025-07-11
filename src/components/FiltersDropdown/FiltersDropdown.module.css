@@ -1,4 +1,5 @@
 .buttonWrapper {
+	position: relative;
 	min-width: 3.5rem;
 	height: 3.5rem;
 }
@@ -21,6 +22,49 @@
 .filterDropdownButton svg {
 	margin-top: 3px;
 }
+
+.dropdownMenu {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	width: 170px;
+	left: -135px;
+	margin-top: 0.8rem;
+	background-color: var(--color-black-800);
+	border: 1px solid rgba(245, 245, 245, 0.2);
+	border-radius: 8px;
+	overflow: hidden;
+	z-index: 20;
+}
+
+.dropdownMenu button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	padding: 0.8rem;
+	background-color: var(--color-black-800);
+	color: var(--color-white-900);
+
+	border: none;
+	transition: 0.2s;
+	cursor: pointer;
+}
+
+.dropdownMenu .active {
+	background-color: var(--accent-color);
+	color: var(--color-black-900);
+}
+
+.dropdownMenu .active:hover {
+	background-color: var(--accent-color-light);
+}
+
+.dropdownMenu button:hover {
+	background-color: var(--accent-color-light);
+}
+
+/* Mobile */
 
 @media (max-width: 576px) {
 	.buttonWrapper {

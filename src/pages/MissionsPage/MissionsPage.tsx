@@ -17,7 +17,7 @@ export default function MissionsPage() {
 
 	const filters: FilterStateType = {
 		status: (searchParams.get('status') || 'all') as StatusFilterType,
-		sort: (searchParams.get('sort') || 'name-asc') as SortType,
+		sort: (searchParams.get('sort') || 'date-desc') as SortType,
 		search,
 	};
 
