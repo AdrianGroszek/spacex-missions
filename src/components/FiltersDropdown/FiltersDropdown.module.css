@@ -44,7 +44,7 @@
 	gap: 1rem;
 	padding: 0.8rem;
 	background-color: var(--color-black-800);
-	color: var(--color-white-900);
+	color: var(--color-white-800);
 
 	border: none;
 	transition: 0.2s;
@@ -53,7 +53,7 @@
 
 .dropdownMenu .active {
 	background-color: var(--accent-color);
-	color: var(--color-black-900);
+	color: var(--color-white-900);
 }
 
 .dropdownMenu .active:hover {
@@ -62,6 +62,7 @@
 
 .dropdownMenu button:hover {
 	background-color: var(--accent-color-light);
+	color: var(--color-white-900);
 }
 
 /* Mobile */
