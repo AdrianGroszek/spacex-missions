@@ -6,6 +6,7 @@ import {
 	useSpaceXMissions,
 	type FilterStateType,
 } from '../../hooks/useSpaceXMissions';
+import { capitalizeWord } from '../../utils/helpers';
 
 type MissionsTablePropsType = {
 	filters: FilterStateType;
@@ -22,6 +23,8 @@ export default function MissionsTable({ filters }: MissionsTablePropsType) {
 
 	if (isLoading) return <div>Loading...</div>;
 	if (error) return <div>Error</div>;
+
+	console.log(filteredLaunches);
 
 	return (
 		<div className={styles.tableContainer}>
@@ -92,14 +95,18 @@ export default function MissionsTable({ filters }: MissionsTablePropsType) {
 								</td>
 								<td data-cell='ship'>
 									<div>
-										<p>Falcon 1</p>
-										<p className={styles.grayText}>Rocket</p>
+										<p>{launch.rocketData.name}</p>
+										<p className={styles.grayText}>
+											{capitalizeWord(launch.rocketData.type)}
+										</p>
 									</div>
 								</td>
 								<td data-cell='launchpad'>
 									<div>
-										<p>VAFB SLC 3W</p>
-										<p className={styles.grayText}>California</p>
+										<p>{launch.launchpadData.name}</p>
+										<p className={styles.grayText}>
+											{capitalizeWord(launch.launchpadData.region)}
+										</p>
 									</div>
 								</td>
 							</tr>

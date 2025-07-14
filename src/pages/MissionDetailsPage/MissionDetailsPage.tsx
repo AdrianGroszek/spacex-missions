@@ -101,7 +101,7 @@ export default function MissionDetailsPage() {
 					landing_success={launch.landing_success}
 				/>
 			)}
-			{/* <DetailsCard /> */}
+			<DetailsCard />
 
 			{/* Payloads card */}
 			<PayloadsCard />
