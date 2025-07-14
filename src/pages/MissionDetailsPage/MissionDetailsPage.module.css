@@ -12,6 +12,8 @@
 }
 
 .imgContainer {
+	display: flex;
+	justify-content: center;
 	height: 50px;
 	width: 50px;
 	border-radius: 4px;
@@ -20,6 +22,16 @@
 .imgContainer .image {
 	width: 100%;
 	object-fit: cover;
+}
+
+.imgContainer .imagePlaceholder svg {
+	width: 80%;
+	height: 80%;
+}
+.imgContainer .imagePlaceholder {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .titleWrapper h1 {

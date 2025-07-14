@@ -132,7 +132,7 @@ export function useSpaceXMissions(filters: FilterStateType) {
 				return result;
 		}
 
-		return result;
+		// return result;
 	}, [enrichedMissions, filters]);
 
 	return {
