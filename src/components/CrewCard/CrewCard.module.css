@@ -49,6 +49,20 @@
 
 .crewName {
 	margin: 0.5rem 0;
+	color: var(--color-white-900);
+}
+
+.crewName:hover {
+	text-decoration: underline;
+	color: var(--accent-color-light);
+}
+
+.noCrewInfo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--color-white-800);
+	font-style: italic;
 }
 
 @media (max-width: 576px) {

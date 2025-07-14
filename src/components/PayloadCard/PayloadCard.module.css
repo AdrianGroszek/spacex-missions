@@ -38,6 +38,14 @@
 	color: var(--accent-color-light);
 	margin-right: 1rem;
 }
+
+.noPayloadInfo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--color-white-800);
+	font-style: italic;
+}
 /* END: payloads section */
 
 @media (max-width: 1280px) {

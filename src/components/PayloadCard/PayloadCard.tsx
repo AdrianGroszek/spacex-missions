@@ -15,8 +15,8 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 
 	const { data: fallbackPayloads, isLoading } = useQuery({
 		queryKey: ['payloads'],
-		queryFn: fetchPayloads, // <- musisz mieć funkcję pobierającą
-		enabled: !cachedPayloads, // tylko jeśli brak w cache
+		queryFn: fetchPayloads,
+		enabled: !cachedPayloads, // if no cached data
 	});
 
 	if (isLoading) return <div>Loading...</div>;
@@ -32,6 +32,12 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 	return (
 		<>
 			<p className={styles.textGray}>Payloads</p>
+			{!filteredPayloads ||
+				(filteredPayloads.length === 0 && (
+					<div className={styles.noPayloadInfo}>
+						<p>This was a payload-free mission.</p>
+					</div>
+				))}
 			<div className={styles.payloads}>
 				{filteredPayloads?.map((payload) => (
 					<div className={styles.payloadsItem} key={payload.id}>

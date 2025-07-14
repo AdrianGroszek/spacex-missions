@@ -11,7 +11,7 @@ export default function PayloadsSection({ launch }: PayloadsSectionPropsType) {
 	return (
 		<div className={styles.sectionWrapper}>
 			<PayloadCard payloadsIds={launch.payloads} />
-			<CrewCard />
+			<CrewCard crewIds={launch.crew} />
 		</div>
 	);
 }
