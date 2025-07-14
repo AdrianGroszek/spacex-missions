@@ -1,13 +1,17 @@
 import { useQuery } from '@tanstack/react-query';
 import { useMemo } from 'react';
 import {
+	fetchCrew,
 	fetchLaunches,
 	fetchLaunchpads,
+	fetchPayloads,
 	fetchRockets,
 } from '../services/spacex';
 import type {
+	SimplifiedSpaceXCrew,
 	SimplifiedSpaceXLaunch,
 	SimplifiedSpaceXLaunchpad,
+	SimplifiedSpaceXPayload,
 	SimplifiedSpaceXRocket,
 } from '../services/types';
 export type StatusFilterType = 'all' | 'success' | 'failure' | 'pending';
@@ -23,6 +27,8 @@ type EnrichedMission = {
 	launchData: SimplifiedSpaceXLaunch;
 	rocketData: SimplifiedSpaceXRocket;
 	launchpadData: SimplifiedSpaceXLaunchpad;
+	payloadsData: SimplifiedSpaceXPayload[];
+	crewData: SimplifiedSpaceXCrew[];
 };
 
 export function useSpaceXMissions(filters: FilterStateType) {
@@ -54,21 +60,51 @@ export function useSpaceXMissions(filters: FilterStateType) {
 		queryFn: fetchLaunchpads,
 	});
 
+	const {
+		data: payloadsData,
+		isLoading: isLoadingPayloads,
+		error: errorPayloads,
+	} = useQuery({
+		queryKey: ['payloads'],
+		queryFn: fetchPayloads,
+	});
+
+	const {
+		data: crewData,
+		isLoading: isLoadingCrew,
+		error: errorCrew,
+	} = useQuery({
+		queryKey: ['crew'],
+		queryFn: fetchCrew,
+	});
+
 	// Enrich data
 	const enrichedMissions = useMemo(() => {
-		if (!launchesData || !rocketsData || !launchpadsData) {
+		if (
+			!launchesData ||
+			!rocketsData ||
+			!launchpadsData ||
+			!payloadsData ||
+			!crewData
+		) {
 			return [];
 		}
 
 		const rocketsMap = new Map(rocketsData.map((r) => [r.id, r]));
 		const launchpadsMap = new Map(launchpadsData.map((l) => [l.id, l]));
+		const payloadsMap = new Map(payloadsData.map((p) => [p.id, p]));
+		const crewMap = new Map(crewData.map((c) => [c.id, c]));
 
 		return launchesData.map((launch) => ({
 			launchData: launch,
 			rocketData: rocketsMap.get(launch.rocket),
 			launchpadData: launchpadsMap.get(launch.launchpad),
+			payloadsData: launch.payloads
+				.map((id) => payloadsMap.get(id))
+				.filter(Boolean),
+			crewData: launch.crew.map((id) => crewMap.get(id)).filter(Boolean),
 		})) as EnrichedMission[];
-	}, [launchesData, rocketsData, launchpadsData]);
+	}, [launchesData, rocketsData, launchpadsData, payloadsData, crewData]);
 
 	// Apply filters, search and sorting
 	const filteredMissions = useMemo(() => {
@@ -139,7 +175,17 @@ export function useSpaceXMissions(filters: FilterStateType) {
 		missions: filteredMissions,
 		allMissions: enrichedMissions,
 		filters,
-		isLoading: isLoadingLaunches || isLoadingRockets || isLoadingLaunchpads,
-		error: errorLaunches || errorRockets || errorLaunchpads,
+		isLoading:
+			isLoadingLaunches ||
+			isLoadingRockets ||
+			isLoadingLaunchpads ||
+			isLoadingPayloads ||
+			isLoadingCrew,
+		error:
+			errorLaunches ||
+			errorRockets ||
+			errorLaunchpads ||
+			errorPayloads ||
+			errorCrew,
 	};
 }

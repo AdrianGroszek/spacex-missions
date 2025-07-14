@@ -1,6 +1,5 @@
 import { useParams } from 'react-router';
 import { format } from 'date-fns';
-import PayloadsCard from '../../components/PayloadsCard/PayloadsCard';
 import styles from './MissionDetailsPage.module.css';
 import { useQuery } from '@tanstack/react-query';
 import {
@@ -11,6 +10,7 @@ import {
 import { PiPlanetFill } from 'react-icons/pi';
 import RocketDetailsCard from '../../components/RocketDetailsCard/RocketDetailsCard';
 import LaunchpadDetailsCard from '../../components/LaunchpadDetailsCard/LaunchpadDetailsCard';
+import PayloadsSection from '../../components/PayloadsSection/PayloadsSection';
 
 export default function MissionDetailsPage() {
 	const { id } = useParams<{ id: string }>();
@@ -50,14 +50,6 @@ export default function MissionDetailsPage() {
 		? 'No date'
 		: format(new Date(launch?.date_utc), 'dd MMMM yyyy');
 
-	// Combine data into one object
-	const missionDetails = {
-		launch,
-		rocket,
-		launchpad,
-	};
-
-	console.log(missionDetails);
 	return (
 		<>
 			{/* Section title */}
@@ -95,21 +87,19 @@ export default function MissionDetailsPage() {
 
 			{/* Details card */}
 			{/* Rocket details */}
-			{missionDetails.rocket && launch && (
+			{rocket && launch && (
 				<RocketDetailsCard
-					rocketData={missionDetails.rocket}
+					rocketData={rocket}
 					landing_attempt={launch.landing_attempt}
 					landing_success={launch.landing_success}
 				/>
 			)}
 
 			{/* Launchpad details */}
-			{missionDetails.launchpad && (
-				<LaunchpadDetailsCard launchpadData={missionDetails.launchpad} />
-			)}
+			{launchpad && <LaunchpadDetailsCard launchpadData={launchpad} />}
 
-			{/* Payloads card */}
-			<PayloadsCard />
+			{/* Payloads section */}
+			{launch && <PayloadsSection launch={launch} />}
 		</>
 	);
 }

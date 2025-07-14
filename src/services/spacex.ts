@@ -1,9 +1,13 @@
 import type {
+	RawSpaceXCrew,
 	RawSpaceXLaunch,
 	RawSpaceXLaunchpad,
+	RawSpaceXPayload,
 	RawSpaceXRocket,
+	SimplifiedSpaceXCrew,
 	SimplifiedSpaceXLaunch,
 	SimplifiedSpaceXLaunchpad,
+	SimplifiedSpaceXPayload,
 	SimplifiedSpaceXRocket,
 } from './types';
 
@@ -58,6 +62,29 @@ export const simplyfyLaunchpadsData = (
 	image: rawData.images.large.length > 0 ? rawData.images.large[0] : null,
 	latitude: rawData.latitude,
 	longitude: rawData.longitude,
+});
+
+export const simplifyPayloadData = (
+	payload: RawSpaceXPayload
+): SimplifiedSpaceXPayload => ({
+	id: payload.id,
+	name: payload.name,
+	type: payload.type,
+	mass_kg: payload.mass_kg,
+	orbit: payload.orbit,
+	customers: payload.customers,
+});
+
+export const simplifyCrewData = (
+	crew: RawSpaceXCrew
+): SimplifiedSpaceXCrew => ({
+	id: crew.id,
+	name: crew.name,
+	agency: crew.agency,
+	image: crew.image,
+	wikipedia: crew.wikipedia,
+	status: crew.status,
+	launches_count: crew.launches.length,
 });
 
 const BASE_URL = 'https://api.spacexdata.com/v4';
@@ -174,6 +201,44 @@ export async function fetchLaunchpad(
 		const rawData = await res.json();
 
 		const processedData = simplyfyLaunchpadsData(rawData);
+
+		return processedData;
+	} catch (error) {
+		console.error(`Error fetching ${error}`);
+		throw error;
+	}
+}
+
+export async function fetchPayloads(): Promise<SimplifiedSpaceXPayload[]> {
+	try {
+		const res = await fetch(`${BASE_URL}/payloads`);
+
+		if (!res.ok) {
+			throw new Error(`SpaceX API ERROR: ${res.status} ${res.statusText}`);
+		}
+
+		const rawData = await res.json();
+
+		const processedData = rawData.map(simplifyPayloadData);
+
+		return processedData;
+	} catch (error) {
+		console.error(`Error fetching ${error}`);
+		throw error;
+	}
+}
+
+export async function fetchCrew(): Promise<SimplifiedSpaceXCrew[]> {
+	try {
+		const res = await fetch(`${BASE_URL}/crew`);
+
+		if (!res.ok) {
+			throw new Error(`SpaceX API ERROR: ${res.status} ${res.statusText}`);
+		}
+
+		const rawData = await res.json();
+
+		const processedData = rawData.map(simplifyCrewData);
 
 		return processedData;
 	} catch (error) {

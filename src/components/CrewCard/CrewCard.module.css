@@ -1,0 +1,68 @@
+.textGray {
+	color: var(--color-white-800);
+}
+
+.textWhite {
+	color: var(--color-white-900);
+}
+
+.textGreen {
+	color: var(--color-green);
+}
+
+.textSmall {
+	font-size: var(--font-size-sm);
+}
+
+/* START: crew section */
+.crewContainer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.crew {
+	display: flex;
+	flex-direction: column;
+	gap: 0.8rem;
+}
+
+.crewCard {
+	display: flex;
+	flex-direction: column;
+	max-width: 140px;
+	gap: 0.2rem;
+}
+
+.imageContainer {
+	width: 140px;
+	height: 170px;
+}
+
+.imageContainer .image {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 6px;
+	border: 1px solid var(--color-black-700);
+}
+
+.crewName {
+	margin: 0.5rem 0;
+}
+
+@media (max-width: 576px) {
+	.crewContainer {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+	}
+
+	.crewCard {
+		min-width: 100%;
+	}
+
+	.imageContainer {
+		width: 100%;
+		height: 250px;
+	}
+}

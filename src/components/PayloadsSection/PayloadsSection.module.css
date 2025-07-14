@@ -1,0 +1,7 @@
+.sectionWrapper {
+	margin-bottom: 4rem;
+}
+
+.sectionWrapper > p {
+	margin-bottom: 1rem;
+}
