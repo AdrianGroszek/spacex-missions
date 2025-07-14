@@ -99,7 +99,7 @@ export default function RocketDetailsCard({
 											? `${styles.textGreen}`
 											: `${styles.textRed}`
 									}>
-									{landing_success ? 'Success' : 'Failure'}
+									{landing_success ? '✔ Success' : '❌ Failure'}
 								</span>
 							</p>
 						)}

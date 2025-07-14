@@ -1,6 +1,5 @@
 import { useParams } from 'react-router';
 import { format } from 'date-fns';
-import DetailsCard from '../../components/DetailsCard/DetailsCard';
 import PayloadsCard from '../../components/PayloadsCard/PayloadsCard';
 import styles from './MissionDetailsPage.module.css';
 import { useQuery } from '@tanstack/react-query';
@@ -11,6 +10,7 @@ import {
 } from '../../services/spacex';
 import { PiPlanetFill } from 'react-icons/pi';
 import RocketDetailsCard from '../../components/RocketDetailsCard/RocketDetailsCard';
+import LaunchpadDetailsCard from '../../components/LaunchpadDetailsCard/LaunchpadDetailsCard';
 
 export default function MissionDetailsPage() {
 	const { id } = useParams<{ id: string }>();
@@ -81,19 +81,20 @@ export default function MissionDetailsPage() {
 						<span>Flight number: {launch?.flight_number}</span>
 						<span>{launchDate}</span>
 						{launch?.success && (
-							<span className={styles.statusSuccess}>Success</span>
+							<span className={styles.statusSuccess}>✔ Success</span>
 						)}
 						{!launch?.success && launch?.upcoming && (
-							<span className={styles.statusPending}>Pending</span>
+							<span className={styles.statusPending}>🕓 Pending</span>
 						)}
 						{!launch?.success && !launch?.upcoming && (
-							<span className={styles.statusFailure}>Failure</span>
+							<span className={styles.statusFailure}>❌ Failure</span>
 						)}
 					</div>
 				</div>
 			</div>
 
 			{/* Details card */}
+			{/* Rocket details */}
 			{missionDetails.rocket && launch && (
 				<RocketDetailsCard
 					rocketData={missionDetails.rocket}
@@ -101,7 +102,11 @@ export default function MissionDetailsPage() {
 					landing_success={launch.landing_success}
 				/>
 			)}
-			<DetailsCard />
+
+			{/* Launchpad details */}
+			{missionDetails.launchpad && (
+				<LaunchpadDetailsCard launchpadData={missionDetails.launchpad} />
+			)}
 
 			{/* Payloads card */}
 			<PayloadsCard />
