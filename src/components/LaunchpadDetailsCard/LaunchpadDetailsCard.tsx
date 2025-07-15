@@ -1,5 +1,6 @@
 import type { SimplifiedSpaceXLaunchpad } from '../../services/types';
 import { capitalizeWord } from '../../utils/helpers';
+import LaunchpadMap from '../LaunchpadMap/LaunchpadMap';
 import styles from './LaunchpadDetailsCard.module.css';
 
 type LaunchpadDetailsCardPropsType = {
@@ -75,6 +76,13 @@ export default function LaunchpadDetailsCard({
 					</div>
 				</div>
 			</div>
+			{/* MAP */}
+			<LaunchpadMap
+				lat={launchpadData.latitude}
+				lng={launchpadData.longitude}
+				launchpadImage={launchpadData.image}
+			/>
+			<div></div>
 		</div>
 	);
 }

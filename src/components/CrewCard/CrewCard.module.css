@@ -50,6 +50,7 @@
 .crewName {
 	margin: 0.5rem 0;
 	color: var(--color-white-900);
+	transition: 0.2s;
 }
 
 .crewName:hover {
