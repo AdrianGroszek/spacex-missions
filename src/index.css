@@ -71,26 +71,7 @@ button {
 
 .leaflet-control-zoom {
 	display: none;
-	/* background-color: #111 !important;
-	border: 1px solid #444 !important;
-	border-radius: 8px;
-	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
-	overflow: hidden; */
 }
-
-/* .leaflet-control-zoom-in,
-.leaflet-control-zoom-out {
-	background-color: #1f6feb !important;
-	color: var(--color-white-900) !important;
-	font-weight: bold;
-	font-size: 1rem;
-	border: none;
-}
-
-.leaflet-control-zoom-in:hover,
-.leaflet-control-zoom-out:hover {
-	background-color: #155ab6 !important;
-} */
 
 .leaflet-control-attribution {
 	background-color: rgba(0, 0, 0, 0.6) !important;
@@ -110,13 +91,11 @@ button {
 .leaflet-popup-content-wrapper {
 	background-color: var(--accent-color) !important;
 	color: #fff !important;
-	padding: 0 !important;
+	padding: 0 1rem !important;
 	overflow: hidden;
-	width: 180px;
-	height: 250px;
+	width: 260px;
 	border-radius: 8px;
-	padding: 8px;
-	font-size: 14px;
+	font-size: 12px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 

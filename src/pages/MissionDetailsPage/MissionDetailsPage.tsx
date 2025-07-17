@@ -86,6 +86,14 @@ export default function MissionDetailsPage() {
 			</div>
 
 			{/* Details card */}
+			<div className={styles.detailsSectionDescription}>
+				<p className={styles.detailsSectionDescriptionTitle}>Mission Details</p>
+				{launch?.details && (
+					<p className={styles.detailsSectionDescriptionText}>
+						{launch?.details}
+					</p>
+				)}
+			</div>
 			{/* Rocket details */}
 			{rocket && launch && (
 				<RocketDetailsCard

@@ -59,12 +59,6 @@ export default function RocketDetailsCard({
 							</span>
 						</p>
 						<p className={styles.InfoItem}>
-							First Flight:{' '}
-							<span className={styles.textWhite}>
-								{rocketData.first_flight}
-							</span>
-						</p>
-						<p className={styles.InfoItem}>
 							Launch Cost:{' '}
 							<span className={styles.textWhite}>
 								${rocketData.cost_per_launch.toLocaleString()}

@@ -73,6 +73,8 @@ export const simplifyPayloadData = (
 	mass_kg: payload.mass_kg,
 	orbit: payload.orbit,
 	customers: payload.customers,
+	manufacturers: payload.manufacturers,
+	reused: payload.reused,
 });
 
 export const simplifyCrewData = (

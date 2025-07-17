@@ -35,6 +35,9 @@ export default function LaunchpadDetailsCard({
 					)}
 				</span>
 			</div>
+			{/* MAP */}
+			<LaunchpadMap launchpadData={launchpadData} />
+
 			<div className={styles.detailsSectionBody}>
 				<div className={styles.detailsSectionDescription}>
 					<p className={styles.detailsSectionDescriptionTitle}>Description</p>
@@ -77,12 +80,7 @@ export default function LaunchpadDetailsCard({
 				</div>
 			</div>
 			{/* MAP */}
-			<LaunchpadMap
-				lat={launchpadData.latitude}
-				lng={launchpadData.longitude}
-				launchpadImage={launchpadData.image}
-			/>
-			<div></div>
+			{/* <LaunchpadMap launchpadData={launchpadData} /> */}
 		</div>
 	);
 }

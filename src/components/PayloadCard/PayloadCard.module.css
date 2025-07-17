@@ -1,7 +1,7 @@
 /* START: payloads section */
 .payloads {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(2, 1fr);
 	gap: 0.8rem;
 	margin-bottom: 3rem;
 }
@@ -23,57 +23,80 @@
 	font-size: var(--font-size-sm);
 }
 
-.payloadsItem {
-	display: flex;
-	width: 100%;
-	width: 100%;
-	gap: 1rem;
-	padding: 1rem;
-	background-color: var(--color-black-800);
-	border: 1px solid var(--color-black-700);
-	border-radius: 6px;
-}
-
-.payloadsItemTitle {
-	color: var(--accent-color-light);
-	margin-right: 1rem;
-}
-
 .noPayloadInfo {
 	display: flex;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	height: 150px;
 	color: var(--color-white-800);
 	font-style: italic;
 }
+
+.payloadsItem {
+	display: flex;
+	flex-direction: column;
+	padding: 1.5rem 2rem;
+	gap: 2rem;
+	/* width: 100%;
+	width: 100%;
+	gap: 1rem;
+	padding: 1rem; */
+	/* background-color: var(--color-black-800); */
+	background: linear-gradient(135deg, #131820, #0c1014);
+	border: 1px solid var(--color-black-700);
+	border-radius: 6px;
+
+	background: radial-gradient(ellipse at bottom, #151b24 0%, #0d1216 100%);
+}
+
+.payloadHeader {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.payloadName {
+	font-size: 2rem;
+	font-weight: bold;
+	color: var(--color-white-900);
+}
+
+.payloadInfoGrid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem;
+}
+
+.payloadInfoWrapper {
+	display: flex;
+	gap: 1.2rem;
+}
+
+.iconContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 38px;
+	height: 38px;
+	background-color: var(--color-black-700);
+	border-radius: 50%;
+}
+
+.iconContainer svg {
+	height: 20px;
+	width: 20px;
+	color: #c7c8ce;
+}
 /* END: payloads section */
 
-@media (max-width: 1280px) {
+@media (max-width: 996px) {
 	.payloads {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 0.8rem;
-		margin-bottom: 3rem;
-	}
-
-	.payloadsItem {
-		max-width: 600px;
-		width: 100%;
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 
-@media (max-width: 600px) {
-	.payloadsItem {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		max-width: 600px;
-		width: 100%;
-		gap: 0.5rem;
-		padding: 1rem;
-	}
-
-	.payloadsItem span:first-child {
-		margin-bottom: 1rem;
-		grid-column: 1 / -1;
+@media (max-width: 630px) {
+	.payloads {
+		grid-template-columns: repeat(1, 1fr);
 	}
 }

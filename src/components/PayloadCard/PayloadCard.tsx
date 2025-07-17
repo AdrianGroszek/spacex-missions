@@ -2,6 +2,12 @@ import { useQuery, useQueryClient } from '@tanstack/react-query';
 import styles from './PayloadCard.module.css';
 import { fetchPayloads } from '../../services/spacex';
 import type { SimplifiedSpaceXPayload } from '../../services/types';
+import {
+	FaIndustry,
+	FaSatellite,
+	FaUser,
+	FaWeightHanging,
+} from 'react-icons/fa';
 
 type CrewCardPropsType = {
 	payloadsIds: string[];
@@ -38,28 +44,75 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 						<p>This was a payload-free mission.</p>
 					</div>
 				))}
+
 			<div className={styles.payloads}>
 				{filteredPayloads?.map((payload) => (
 					<div className={styles.payloadsItem} key={payload.id}>
-						<span className={styles.payloadsItemTitle}>{payload.name}</span>
-						<span>
-							Type: <span className={styles.textWhite}>{payload.type}</span>
-						</span>
-						<span>
-							Customer:{' '}
-							<span className={styles.textWhite}>
-								{payload.customers.at(0)}
-							</span>
-						</span>
-						{payload.mass_kg && (
-							<span>
-								Mass:{' '}
-								<span className={styles.textWhite}>{payload.mass_kg} kg</span>
-							</span>
-						)}
-						<span>
-							Orbit: <span className={styles.textWhite}>{payload.orbit}</span>
-						</span>
+						<div>
+							<div className={styles.payloadHeader}>
+								<p className={styles.payloadName}>{payload.name}</p>
+								{payload.reused ? (
+									<p>
+										Reused <span className={styles.textGreen}>♻</span>
+									</p>
+								) : (
+									<p>
+										First flight <span className={styles.textGreen}>🚀</span>
+									</p>
+								)}
+							</div>
+							<span>{payload.type}</span>
+						</div>
+						<div className={styles.payloadInfoGrid}>
+							{payload.customers.length !== 0 && (
+								<div className={styles.payloadInfoWrapper}>
+									<div className={styles.iconContainer}>
+										<FaUser />
+									</div>
+									<div>
+										<p>Customer</p>
+										<p className={styles.textWhite}>
+											{payload.customers.at(0)}
+										</p>
+									</div>
+								</div>
+							)}
+							{payload.manufacturers.length !== 0 && (
+								<div className={styles.payloadInfoWrapper}>
+									<div className={styles.iconContainer}>
+										<FaIndustry />
+									</div>
+									<div>
+										<p>Manufacturer</p>
+										<p className={styles.textWhite}>
+											{payload.manufacturers.at(0)}
+										</p>
+									</div>
+								</div>
+							)}
+							{payload.mass_kg && (
+								<div className={styles.payloadInfoWrapper}>
+									<div className={styles.iconContainer}>
+										<FaWeightHanging />
+									</div>
+									<div>
+										<p>Mass</p>
+										<p className={styles.textWhite}>
+											{payload.mass_kg?.toLocaleString()} kg
+										</p>
+									</div>
+								</div>
+							)}
+							<div className={styles.payloadInfoWrapper}>
+								<div className={styles.iconContainer}>
+									<FaSatellite />
+								</div>
+								<div>
+									<p>Orbit</p>
+									<p className={styles.textWhite}>{payload.orbit}</p>
+								</div>
+							</div>
+						</div>
 					</div>
 				))}
 			</div>

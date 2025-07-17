@@ -39,13 +39,12 @@ export default function CrewCard({ crewIds }: CrewCardPropsType) {
 				))}
 			<div className={styles.crewContainer}>
 				{filteredCrew?.map((crew) => (
-					<div className={styles.crewCard}>
+					<a href={crew.wikipedia} target='blank' className={styles.crewCard}>
 						<div className={styles.imageContainer}>
 							<img src={crew.image} alt='crew image' className={styles.image} />
 						</div>
-						<a href={crew.wikipedia} target='blank' className={styles.crewName}>
-							{crew.name}
-						</a>
+						<p className={styles.crewName}>{crew.name}</p>
+
 						<span className={`${styles.textGray} ${styles.textSmall}`}>
 							{crew.agency}
 						</span>
@@ -55,7 +54,7 @@ export default function CrewCard({ crewIds }: CrewCardPropsType) {
 								{capitalizeWord(crew.status)}
 							</span>
 						</span>
-					</div>
+					</a>
 				))}
 			</div>
 		</div>

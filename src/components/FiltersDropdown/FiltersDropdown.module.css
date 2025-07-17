@@ -56,13 +56,8 @@
 	color: var(--color-white-900);
 }
 
-.dropdownMenu .active:hover {
-	background-color: var(--accent-color-light);
-}
-
-.dropdownMenu button:hover {
-	background-color: var(--accent-color-light);
-	color: var(--color-white-900);
+.dropdownMenu button:not(.active):hover {
+	background-color: var(--color-black-700);
 }
 
 /* Mobile */

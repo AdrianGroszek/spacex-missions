@@ -13,7 +13,9 @@
 	background-color: var(--color-black-900);
 	border-bottom: 1px solid var(--color-black-700);
 
-	box-shadow: 0 20px 20px 0px rgba(13, 17, 23, 0.5);
+	box-shadow: 0 6px 8px 0px rgba(13, 17, 23, 0.5);
+
+	z-index: 1100;
 }
 
 .imgContainer {
@@ -63,8 +65,29 @@
 	color: var(--color-orange);
 }
 /* END: Mission title */
+/* START: Mission details */
+.detailsSectionDescription {
+	width: 50%;
+	padding: 0 5px;
+	margin-bottom: 0.8rem;
+}
+.detailsSectionDescriptionTitle {
+	margin-bottom: 5px;
+	color: var(--color-white-800);
+}
+.detailsSectionDescriptionText {
+	text-align: justify;
+	line-height: 1.4;
+}
+/* END: Mission details */
 
 /* Mobile */
+@media (max-width: 992px) {
+	.detailsSectionDescription {
+		width: 100%;
+	}
+}
+
 @media (max-width: 576px) {
 	.missionTitleContainer {
 		padding-top: 60px;

@@ -18,6 +18,7 @@
 
 .detailsSectionBody {
 	display: flex;
+	justify-content: space-between;
 }
 
 .detailsSectionDescription {
@@ -38,17 +39,29 @@
 	height: 100%;
 	object-fit: cover;
 	border-radius: 4px;
+	/* filter: grayscale(60%);
+	transition: 0.3s; */
 }
+
+/* .imgContainer .image:hover {
+	filter: grayscale(0%);
+} */
 
 .detailsSetcionRight {
 	display: flex;
 	gap: 0.75rem;
+	padding-top: 2.4rem;
 }
 
 .detailsSetcionRightInfoItems {
 	display: flex;
 	flex-direction: column;
 	gap: 0.4rem;
+}
+
+.detailsSectionDescriptionText {
+	text-align: justify;
+	line-height: 1.4;
 }
 
 .textWhite {

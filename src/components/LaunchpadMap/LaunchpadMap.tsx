@@ -1,23 +1,29 @@
 import styles from './LaunchpadMap.module.css';
+import { Marker as LeafletMarker } from 'leaflet';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { PiMouseScrollLight } from 'react-icons/pi';
+import type { SimplifiedSpaceXLaunchpad } from '../../services/types';
 
 const mapApiKey = import.meta.env.VITE_MAP_API_KEY;
 
 type LaunchpadMapPropsType = {
-	lat: number | null;
-	lng: number | null;
-	launchpadImage: string | null;
+	launchpadData: SimplifiedSpaceXLaunchpad;
 };
 
-export default function LaunchpadMap({
-	lat,
-	lng,
-	launchpadImage,
-}: LaunchpadMapPropsType) {
-	if (lat === null || lng === null) {
+export default function LaunchpadMap({ launchpadData }: LaunchpadMapPropsType) {
+	const markerRef = useRef<LeafletMarker>(null);
+
+	useEffect(() => {
+		const timeout = setTimeout(() => {
+			markerRef.current?.openPopup();
+		}, 0); // lub 100ms jeśli nadal nie działa
+
+		return () => clearTimeout(timeout);
+	}, []);
+
+	if (launchpadData.latitude === null || launchpadData.longitude === null) {
 		return <p>Location not available for this launch site.</p>;
 	}
 
@@ -37,13 +43,14 @@ export default function LaunchpadMap({
 
 			const onWheel = (e: WheelEvent) => {
 				if (e.ctrlKey) {
+					e.preventDefault();
 					map.scrollWheelZoom.enable();
 				} else {
 					map.scrollWheelZoom.disable();
 				}
 			};
 
-			container.addEventListener('wheel', onWheel);
+			container.addEventListener('wheel', onWheel, { passive: false });
 
 			return () => {
 				container.removeEventListener('wheel', onWheel);
@@ -56,8 +63,8 @@ export default function LaunchpadMap({
 	return (
 		<div className={styles.mapContainer}>
 			<MapContainer
-				center={[lat + 0.012, lng]}
-				zoom={13}
+				center={[launchpadData.latitude - 0.2, launchpadData.longitude + 1]}
+				zoom={8}
 				scrollWheelZoom={false}
 				style={{ height: '100%', width: '100%' }}>
 				<ScrollZoomWithCtrl />
@@ -66,12 +73,19 @@ export default function LaunchpadMap({
 					url={`https://tile.jawg.io/jawg-dark/{z}/{x}/{y}{r}.png?access-token=${mapApiKey}`}
 					crossOrigin=''
 				/>
-				<Marker position={[lat, lng]} icon={customIcon}>
-					{/* <Popup>
-						{launchpadImage && (
-							<img src={launchpadImage} alt='' className={styles.popupImage} />
-							)}
-							</Popup> */}
+				<Marker
+					position={[launchpadData.latitude, launchpadData.longitude]}
+					icon={customIcon}
+					ref={markerRef}>
+					<Popup>
+						{launchpadData.image && (
+							<div>
+								<p>
+									{launchpadData.full_name} - ({launchpadData.region})
+								</p>
+							</div>
+						)}
+					</Popup>
 				</Marker>
 			</MapContainer>
 			<div className={styles.hint}>

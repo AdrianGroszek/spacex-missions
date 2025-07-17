@@ -316,6 +316,8 @@ export type SimplifiedSpaceXPayload = {
 	mass_kg: number | null;
 	orbit: string;
 	customers: string[];
+	manufacturers: string[];
+	reused: boolean;
 };
 // END: Payloads Types
 
