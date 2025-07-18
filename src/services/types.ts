@@ -318,6 +318,7 @@ export type SimplifiedSpaceXPayload = {
 	customers: string[];
 	manufacturers: string[];
 	reused: boolean;
+	regime: string;
 };
 // END: Payloads Types
 

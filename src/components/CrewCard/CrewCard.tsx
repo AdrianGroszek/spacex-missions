@@ -39,21 +39,27 @@ export default function CrewCard({ crewIds }: CrewCardPropsType) {
 				))}
 			<div className={styles.crewContainer}>
 				{filteredCrew?.map((crew) => (
-					<a href={crew.wikipedia} target='blank' className={styles.crewCard}>
+					<a
+						href={crew.wikipedia}
+						target='blank'
+						className={styles.crewCard}
+						key={crew.id}>
 						<div className={styles.imageContainer}>
 							<img src={crew.image} alt='crew image' className={styles.image} />
 						</div>
-						<p className={styles.crewName}>{crew.name}</p>
+						<div className={styles.crewInfoWrapper}>
+							<p className={styles.crewName}>{crew.name}</p>
 
-						<span className={`${styles.textGray} ${styles.textSmall}`}>
-							{crew.agency}
-						</span>
-						<span className={`${styles.textGray} ${styles.textSmall}`}>
-							Status:{' '}
-							<span className={styles.textGreen}>
-								{capitalizeWord(crew.status)}
-							</span>
-						</span>
+							<p className={`${styles.textGray} ${styles.textSmall}`}>
+								{crew.agency}
+							</p>
+							<p className={`${styles.textGray} ${styles.textSmall}`}>
+								Status:{' '}
+								<span className={styles.textGreen}>
+									{capitalizeWord(crew.status)}
+								</span>
+							</p>
+						</div>
 					</a>
 				))}
 			</div>

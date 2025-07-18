@@ -64,6 +64,37 @@
 .statusPending {
 	color: var(--color-orange);
 }
+
+.prevPageButtonWrapper {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 50px;
+}
+
+.prevPageButton {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	border: 1px solid var(--color-white-800);
+	background-color: transparent;
+	transition: 0.2s;
+}
+
+.prevPageButton svg {
+	margin-top: 3px;
+	color: var(--color-white-800);
+	transition: 0.2s;
+}
+
+.prevPageButton:hover {
+	border: 1px solid var(--color-white-900);
+}
+
+.prevPageButton:hover svg {
+	color: var(--color-white-900);
+}
 /* END: Mission title */
 /* START: Mission details */
 .detailsSectionDescription {
@@ -90,6 +121,7 @@
 
 @media (max-width: 576px) {
 	.missionTitleContainer {
+		align-items: center;
 		padding-top: 60px;
 	}
 	.titleWrapper h1 {
@@ -99,5 +131,18 @@
 	.imgContainer {
 		height: 40px;
 		width: 40px;
+	}
+
+	.prevPageButtonWrapper {
+		width: 25px;
+	}
+
+	.prevPageButton {
+		width: 25px;
+		height: 25px;
+	}
+
+	.prevPageButton svg {
+		margin-top: 3px;
 	}
 }

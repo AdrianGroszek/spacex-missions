@@ -53,8 +53,13 @@
 	transition: 0.2s;
 }
 
+.tableWrapper tbody tr:not(:last-child) {
+	border-bottom: 1px solid var(--color-black-700);
+}
+
 .tableWrapper tbody tr:hover {
-	background-color: var(--color-black-800);
+	/* background-color: var(--color-black-800); */
+	background: radial-gradient(ellipse at bottom, #1b212c 0%, #0c1014 80%);
 	cursor: pointer;
 }
 

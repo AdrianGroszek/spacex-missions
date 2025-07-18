@@ -46,7 +46,11 @@
 	border: 1px solid var(--color-black-700);
 	border-radius: 6px;
 
-	background: radial-gradient(ellipse at bottom, #151b24 0%, #0d1216 100%);
+	background: radial-gradient(ellipse at bottom, #131820 0%, #0c1014 100%);
+}
+
+.payloadHeaderWrapper {
+	padding-left: 0.5rem;
 }
 
 .payloadHeader {
@@ -95,7 +99,7 @@
 	}
 }
 
-@media (max-width: 630px) {
+@media (max-width: 768px) {
 	.payloads {
 		grid-template-columns: repeat(1, 1fr);
 	}

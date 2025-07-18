@@ -75,6 +75,7 @@ export const simplifyPayloadData = (
 	customers: payload.customers,
 	manufacturers: payload.manufacturers,
 	reused: payload.reused,
+	regime: payload.regime,
 });
 
 export const simplifyCrewData = (

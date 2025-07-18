@@ -8,6 +8,7 @@ import {
 	FaUser,
 	FaWeightHanging,
 } from 'react-icons/fa';
+import { IoIosRocket } from 'react-icons/io';
 
 type CrewCardPropsType = {
 	payloadsIds: string[];
@@ -48,7 +49,7 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 			<div className={styles.payloads}>
 				{filteredPayloads?.map((payload) => (
 					<div className={styles.payloadsItem} key={payload.id}>
-						<div>
+						<div className={styles.payloadHeaderWrapper}>
 							<div className={styles.payloadHeader}>
 								<p className={styles.payloadName}>{payload.name}</p>
 								{payload.reused ? (
@@ -57,7 +58,10 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 									</p>
 								) : (
 									<p>
-										First flight <span className={styles.textGreen}>🚀</span>
+										First flight{' '}
+										<span className={styles.textWhite}>
+											<IoIosRocket />
+										</span>
 									</p>
 								)}
 							</div>
@@ -109,7 +113,9 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 								</div>
 								<div>
 									<p>Orbit</p>
-									<p className={styles.textWhite}>{payload.orbit}</p>
+									<p className={styles.textWhite}>
+										{payload.orbit} {payload.regime && `(${payload.regime})`}
+									</p>
 								</div>
 							</div>
 						</div>

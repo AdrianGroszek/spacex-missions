@@ -1,4 +1,4 @@
-import { useParams } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { format } from 'date-fns';
 import styles from './MissionDetailsPage.module.css';
 import { useQuery } from '@tanstack/react-query';
@@ -11,9 +11,15 @@ import { PiPlanetFill } from 'react-icons/pi';
 import RocketDetailsCard from '../../components/RocketDetailsCard/RocketDetailsCard';
 import LaunchpadDetailsCard from '../../components/LaunchpadDetailsCard/LaunchpadDetailsCard';
 import PayloadsSection from '../../components/PayloadsSection/PayloadsSection';
+import { FaArrowLeft } from 'react-icons/fa';
 
 export default function MissionDetailsPage() {
 	const { id } = useParams<{ id: string }>();
+	const navigate = useNavigate();
+
+	function handlePrevPage() {
+		navigate(-1);
+	}
 
 	// fetch launch/id
 	const {
@@ -54,6 +60,12 @@ export default function MissionDetailsPage() {
 		<>
 			{/* Section title */}
 			<div className={styles.missionTitleContainer}>
+				<div className={styles.prevPageButtonWrapper}>
+					<button className={styles.prevPageButton} onClick={handlePrevPage}>
+						<FaArrowLeft />
+					</button>
+				</div>
+
 				<div className={styles.imgContainer}>
 					{launch?.image ? (
 						<img
