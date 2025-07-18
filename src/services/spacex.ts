@@ -28,6 +28,7 @@ export const simplyfyLaunchData = (
 	payloads: launch.payloads,
 	launchpad: launch.launchpad,
 	rocket: launch.rocket,
+	links: launch.links,
 });
 
 export const simplifyRocketData = (

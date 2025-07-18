@@ -52,6 +52,13 @@
 	font-weight: bold;
 }
 
+.noLinksFound {
+	text-align: center;
+	color: var(--color-white-800);
+	font-style: italic;
+	padding: 3rem 0;
+}
+
 @media (max-width: 992px) {
 	.linkItem {
 		min-width: 0;

@@ -99,6 +99,7 @@ export type SimplifiedSpaceXLaunch = {
 	payloads: string[];
 	launchpad: string;
 	rocket: string;
+	links: Links;
 };
 // END: Launches Types
 

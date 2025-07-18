@@ -26,7 +26,7 @@ export default function CrewCard({ crewIds }: CrewCardPropsType) {
 
 	const filteredCrew = crew?.filter((crew) => crewIds.includes(crew.id));
 
-	console.log(filteredCrew);
+	// console.log(filteredCrew);
 
 	return (
 		<div className={styles.crew}>

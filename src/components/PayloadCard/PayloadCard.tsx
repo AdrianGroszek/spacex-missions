@@ -34,7 +34,7 @@ export default function PayloadCard({ payloadsIds }: CrewCardPropsType) {
 		payloadsIds.includes(payload.id)
 	);
 
-	console.log(filteredPayloads);
+	// console.log(filteredPayloads);
 
 	return (
 		<>
