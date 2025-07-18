@@ -12,6 +12,7 @@ import RocketDetailsCard from '../../components/RocketDetailsCard/RocketDetailsC
 import LaunchpadDetailsCard from '../../components/LaunchpadDetailsCard/LaunchpadDetailsCard';
 import PayloadsSection from '../../components/PayloadsSection/PayloadsSection';
 import { FaArrowLeft } from 'react-icons/fa';
+import Footer from '../../components/Footer/Footer';
 
 export default function MissionDetailsPage() {
 	const { id } = useParams<{ id: string }>();
@@ -99,12 +100,20 @@ export default function MissionDetailsPage() {
 
 			{/* Details card */}
 			<div className={styles.detailsSectionDescription}>
-				<p className={styles.detailsSectionDescriptionTitle}>Mission Details</p>
-				{launch?.details && (
-					<p className={styles.detailsSectionDescriptionText}>
-						{launch?.details}
+				<div className={styles.detailsSectionDescriptionLeft}>
+					<p className={styles.detailsSectionDescriptionTitle}>
+						Mission Details
 					</p>
-				)}
+					{launch?.details ? (
+						<p className={styles.detailsSectionDescriptionText}>
+							{launch?.details}
+						</p>
+					) : (
+						<p className={styles.missionDetailsNotFoundText}>
+							No mission details found.
+						</p>
+					)}
+				</div>
 			</div>
 			{/* Rocket details */}
 			{rocket && launch && (
@@ -120,6 +129,9 @@ export default function MissionDetailsPage() {
 
 			{/* Payloads section */}
 			{launch && <PayloadsSection launch={launch} />}
+
+			{/* Footer */}
+			<Footer />
 		</>
 	);
 }

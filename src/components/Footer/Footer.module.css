@@ -1,0 +1,22 @@
+.footerWrapper {
+	border-top: 1px solid var(--color-black-700);
+	padding: 2rem 0.5rem 2rem;
+	background: radial-gradient(ellipse at bottom, #0e1b33 0%, #0c1014 70%);
+}
+
+.createdBy {
+	margin-top: 3rem;
+	text-align: center;
+	color: var(--color-white-800);
+	opacity: 0.85;
+}
+
+.createdBy a {
+	color: var(--color-white-900);
+	transition: 0.1s;
+}
+
+.createdBy a:hover {
+	color: var(--accent-color-light);
+	text-decoration: underline;
+}
