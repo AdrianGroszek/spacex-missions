@@ -1,7 +1,7 @@
 .footerWrapper {
 	border-top: 1px solid var(--color-black-700);
 	padding: 2rem 0.5rem 2rem;
-	background: radial-gradient(ellipse at bottom, #0e1b33 0%, #0c1014 70%);
+	background: radial-gradient(ellipse at bottom, #0e1b33 0%, #0d1117 70%);
 }
 
 .createdBy {
